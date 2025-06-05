@@ -1,0 +1,166 @@
+{
+  "trading": {
+    "symbols": [
+      "BTC/USDT",
+      "ETH/USDT",
+      "BNB/USDT",
+      "SOL/USDT",
+      "XRP/USDT"
+    ],
+    "trading_interval": 300,
+    "min_confidence": 0.6,
+    "rebalance_interval": 86400
+  },
+  "risk_management": {
+    "max_position_size": 0.02,
+    "max_daily_loss": 0.05,
+    "stop_loss_pct": 0.03,
+    "take_profit_pct": 0.06,
+    "max_correlation": 0.7,
+    "max_leverage": 1.0,
+    "max_positions": 5,
+    "trailing_stop": {
+      "enabled": true,
+      "activation_pct": 0.03,
+      "trailing_pct": 0.01
+    }
+  },
+  "ai_analysis": {
+    "model": "gpt-4o-mini",
+    "temperature": 0.2,
+    "max_tokens": 1500,
+    "analysis_lookback": 200,
+    "sentiment_sources": [
+      "technical",
+      "on_chain",
+      "market_structure"
+    ]
+  },
+  "technical_indicators": {
+    "rsi_period": 14,
+    "macd_fast": 12,
+    "macd_slow": 26,
+    "macd_signal": 9,
+    "bb_period": 20,
+    "bb_std_dev": 2.0,
+    "atr_period": 14,
+    "ema_short": 9,
+    "ema_long": 21,
+    "volume_period": 20
+  },
+  "strategy_weights": {
+    "trend_following": 0.3,
+    "mean_reversion": 0.2,
+    "momentum": 0.25,
+    "ai_signals": 0.25,
+    "main_system": 0.6,
+    "advanced_strategies": 0.4
+  },
+  "backtesting": {
+    "enabled": true,
+    "period_days": 30,
+    "initial_capital": 10000,
+    "commission": 0.001
+  },
+  "monitoring": {
+    "portfolio_check_interval": 300,
+    "risk_check_interval": 60,
+    "performance_report_interval": 3600
+  },
+  "notifications": {
+    "enabled": true,
+    "channels": ["log", "email", "telegram"],
+    "events": [
+      "trade_executed",
+      "stop_loss_hit",
+      "daily_limit_reached",
+      "system_error"
+    ],
+    "min_trade_amount": 10.0,
+    "telegram": {
+      "bot_token": "${TELEGRAM_BOT_TOKEN}",
+      "chat_id": "${TELEGRAM_CHAT_ID}"
+    },
+    "email": {
+      "smtp_server": "smtp.gmail.com",
+      "smtp_port": 587,
+      "username": "${EMAIL_USERNAME}",
+      "password": "${EMAIL_PASSWORD}",
+      "to": "${EMAIL_TO}"
+    }
+  },
+  "exchanges": {
+    "primary": "binance",
+    "backup": ["kucoin", "bybit"],
+    "api_keys": {
+      "binance": {
+        "api_key": "${BINANCE_API_KEY}",
+        "api_secret": "${BINANCE_API_SECRET}"
+      },
+      "kucoin": {
+        "api_key": "${KUCOIN_API_KEY}",
+        "api_secret": "${KUCOIN_API_SECRET}",
+        "passphrase": "${KUCOIN_PASSPHRASE}"
+      },
+      "bybit": {
+        "api_key": "${BYBIT_API_KEY}",
+        "api_secret": "${BYBIT_API_SECRET}"
+      }
+    },
+    "rate_limits": {
+      "requests_per_minute": 1200,
+      "orders_per_minute": 60
+    }
+  },
+  "database": {
+    "type": "postgresql",
+    "postgresql": {
+      "host": "${POSTGRES_HOST:-localhost}",
+      "port": "${POSTGRES_PORT:-5432}",
+      "database": "${POSTGRES_DB:-crypto_trading}",
+      "user": "${POSTGRES_USER:-postgres}",
+      "password": "${POSTGRES_PASSWORD}",
+      "min_connections": 5,
+      "max_connections": 20,
+      "command_timeout": 60
+    },
+    "sqlite": {
+      "path": "data/trading_agent.db"
+    }
+  },
+  "advanced_strategies": {
+    "enabled": true,
+    "market_analysis": {
+      "regime_classification": true,
+      "sentiment_analysis": false,
+      "macro_indicators": false
+    },
+    "active_strategies": [
+      {
+        "name": "ma_crossover",
+        "type": "TREND_FOLLOWING",
+        "parameters": {
+          "fast_period": 10,
+          "slow_period": 20,
+          "confidence_threshold": 0.7
+        },
+        "weight": 0.6
+      }
+    ],
+    "optimization": {
+      "enabled": false,
+      "method": "bayesian",
+      "frequency": "daily"
+    },
+    "learning": {
+      "enabled": false,
+      "adaptation_rate": 0.1,
+      "performance_window": 30
+    }
+  },
+  "environment": {
+    "openai_api_key": "${OPENAI_API_KEY}",
+    "log_level": "INFO",
+    "log_file": "trading_agent.log"
+  }
+}
